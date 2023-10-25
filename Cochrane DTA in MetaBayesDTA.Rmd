@@ -34,9 +34,7 @@ For comments or question on this document please e-mail tm428@leicester.ac.uk.
 
 # Introduction
 
-
-
-This guide contains step-by-step instructions on how to reproduce the example meta-analyses in the Cochrane Handbook for Systematic Reviews of Diagnostic Test Accuracy Version 2 [(https://training.cochrane.org/handbook-diagnostic-test-accuracy/current)](https://training.cochrane.org/handbook-diagnostic-test-accuracy/current), using the MetaBayesDTA app [(https://crsu.shinyapps.io/MetaBayesDTA/)](https://crsu.shinyapps.io/MetaBayesDTA/). Six of the examples contained in chapters 9 and 10 of the handbook can be carried out in MetaBayesDTA. Before starting, the reader should familiarise themselves with the example(s) they wish to reproduce and download the accompanying datasets.
+This guide contains step-by-step instructions on how to reproduce the example meta-analyses in the Cochrane Handbook for Systematic Reviews of Diagnostic Test Accuracy Version 2 <span style="text-decoration:underline"> [(https://training.cochrane.org/handbook-diagnostic-test-accuracy/current)](https://training.cochrane.org/handbook-diagnostic-test-accuracy/current)</span>, using the MetaBayesDTA app <span style="text-decoration:underline">  [(https://crsu.shinyapps.io/MetaBayesDTA/)](https://crsu.shinyapps.io/MetaBayesDTA/)</span>. Six of the examples contained in chapters 9 and 10 of the handbook can be carried out in MetaBayesDTA. Before starting, the reader should familiarise themselves with the example(s) they wish to reproduce and download the accompanying datasets.
 
 Sections 2 to 7 each correspond to one of the models in the handbook. Since there are many similarities between them, the guide does not duplicate instructions. For example, the required format of the dataset is the same in each case, and therefore instructions on formatting the datasets are only given for the first model, in section 2. For this reason the reader should not jump straight to the section corresponding to the model they wish to reproduce. They should instead read the sections in order, according to the prerequisite table below.
 
