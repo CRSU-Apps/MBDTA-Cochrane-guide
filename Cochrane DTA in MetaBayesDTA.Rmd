@@ -1,7 +1,7 @@
 ---
-title: <center> Reproducing analyses from the Cochrane DTA handbook in MetaBayesDTA <br> v1.0
+title: <center> Reproducing analyses from the Cochrane DTA handbook in MetaBayesDTA <br> v2.0
 author: <center> Tom Morris (tm428@leicester.ac.uk)
-date: <center> October 2023
+date: <center> April 2024
 output: 
   bookdown::html_document2:
     number_sections: true
@@ -15,12 +15,15 @@ editor_options:
 
 <br>
 
-
 <!--------------------------------------------------------------------------------------->
 
 <!-- Introduction
 
 <!--------------------------------------------------------------------------------------->
+
+```{r, label = "", dpi=45, fig.align = "center", echo = FALSE, fig.cap ="", out.height="30%", out.width="30%"}
+knitr::include_graphics(".//Introduction//MetaBayesDTA.png")
+```
 
 
 ```{r, label = "", dpi=45, fig.align = "center", echo = FALSE, fig.cap ="", out.height="100%", out.width="100%"}
@@ -34,7 +37,9 @@ For comments or question on this document please e-mail tm428@leicester.ac.uk.
 
 # Introduction
 
-This guide contains step-by-step instructions on how to reproduce the example meta-analyses in the Cochrane Handbook for Systematic Reviews of Diagnostic Test Accuracy Version 2 <span style="text-decoration:underline"> [(https://training.cochrane.org/handbook-diagnostic-test-accuracy/current)](https://training.cochrane.org/handbook-diagnostic-test-accuracy/current)</span>, using the MetaBayesDTA app <span style="text-decoration:underline">  [(https://crsu.shinyapps.io/MetaBayesDTA/)](https://crsu.shinyapps.io/MetaBayesDTA/)</span>. Six of the examples contained in chapters 9 and 10 of the handbook can be carried out in MetaBayesDTA. Before starting, the reader should familiarise themselves with the example(s) they wish to reproduce and download the accompanying datasets.
+
+
+This guide contains step-by-step instructions on how to reproduce the example meta-analyses in the Cochrane Handbook for Systematic Reviews of Diagnostic Test Accuracy Version 2 [(https://training.cochrane.org/handbook-diagnostic-test-accuracy/current)](https://training.cochrane.org/handbook-diagnostic-test-accuracy/current), using the MetaBayesDTA app [(https://crsu.shinyapps.io/MetaBayesDTA/)](https://crsu.shinyapps.io/MetaBayesDTA/). Six of the examples contained in chapters 9 and 10 of the handbook can be carried out in MetaBayesDTA. Before starting, the reader should familiarise themselves with the example(s) they wish to reproduce and download the accompanying datasets.
 
 Sections 2 to 7 each correspond to one of the models in the handbook. Since there are many similarities between them, the guide does not duplicate instructions. For example, the required format of the dataset is the same in each case, and therefore instructions on formatting the datasets are only given for the first model, in section 2. For this reason the reader should not jump straight to the section corresponding to the model they wish to reproduce. They should instead read the sections in order, according to the prerequisite table below.
 
@@ -108,37 +113,7 @@ knitr::include_graphics(".//Cochrane DTA 9.4.2 example 1//Pictures//Analysis 1.p
 
 <br>
 
-The two drop-down menus contain Stan sampling options and prior distributions. They can both be left at their default values. Run sampling from the prior distributions by clicking **Click to run prior model**.
-
-<br>
-
-```{r, label = "", dpi=45, fig.align = "center", echo = FALSE, fig.cap ="", out.height="90%", out.width="90%"}
-knitr::include_graphics(".//Cochrane DTA 9.4.2 example 1//Pictures//Analysis 2.png")
-```
-
-<br>
-
-A text box will appear. Scroll down and click **OK**.
-
-<br>
-
-```{r, label = "", dpi=45, fig.align = "center", echo = FALSE, fig.cap ="", out.height="90%", out.width="90%"}
-knitr::include_graphics(".//Cochrane DTA 9.4.2 example 1//Pictures//Analysis 3.png")
-```
-
-<br>
-
-When the sampling has finished, details of the prior distributions will appear in a table and several plots.
-
-<br>
-
-```{r, label = "", dpi=45, fig.align = "center", echo = FALSE, fig.cap ="", out.height="90%", out.width="90%"}
-knitr::include_graphics(".//Cochrane DTA 9.4.2 example 1//Pictures//Analysis 4.png")
-```
-
-<br>
-
-Navigate to the **Run model** tab.
+On the **Priors** tab there are two drop-down menus that contain options for sampling in Stan and prior distributions. They can both be left at their default values in this example. Navigate to the **Run model** tab.
 
 <br>
 
@@ -158,7 +133,7 @@ knitr::include_graphics(".//Cochrane DTA 9.4.2 example 1//Pictures//Analysis 6.p
 
 <br>
 
-Another text box will pop up. Click **OK** to close it.
+A text box will pop up. Click **OK** to close it.
 
 <br>
 
@@ -176,6 +151,14 @@ It will take some time for the model to run, and may appear that nothing is happ
 knitr::include_graphics(".//Cochrane DTA 9.4.2 example 1//Pictures//SROC.png")
 ```
 
+<br>
+
+
+
+<!--------------------------------------------------------------------------------------->
+<!-- Compare the parameters
+<!--------------------------------------------------------------------------------------->
+## Compare the parameters
 
 <br>
 
@@ -189,11 +172,6 @@ knitr::include_graphics(".//Cochrane DTA 9.4.2 example 1//Pictures//Parameters.p
 
 <br>
 
-
-<!--------------------------------------------------------------------------------------->
-<!-- Estimate the parameters
-<!--------------------------------------------------------------------------------------->
-## Estimate the parameters (optional)
 
 The table below is from chapter 9, page 16, of the handbook, and contains the parameter estimates and their standard errors from the frequentist Bivariate model.
 
@@ -224,7 +202,7 @@ dfParameters_1 <- data.frame(c("Cochrane frequentist", "Cochrane Bayesian", "Met
 knitr::kable(x=dfParameters_1, col.names=c("Parameters", "", "", "", "", ""), align = 'l')
 ```
 
-MetaBayesDTA does not currently produce estimates of all of the parameters in the Cochrane handbook, and provides only median parameter estimates and posterior intervals for those that it does. However, all the output in the handbook can be estimated from MetaBayesDTA output. This is done for each parameter in the following subsections, with justification for the calculations provided in the appendix.
+MetaBayesDTA does not currently produce estimates of all of the parameters in the Cochrane handbook. However, all the output in the handbook can be estimated from MetaBayesDTA output. This is done for each parameter in the following subsections, with justification for the calculations provided in the appendix.
 
 Each subsection has a summary table in which the parameter estimates and standard deviations are displayed. For the frequentist models these are parameter estimates and their standard errors. For the Bayesian models they are the median and standard deviation of the posterior distributions. In addition, there are 95% posterior intervals for the Bayesian models.
 
@@ -235,187 +213,119 @@ Since the estimation methods used for the Bayesian analysis are based on simulat
 ### Mean logit sensitivity ($\mu_A$)
 
 ```{r, echo=FALSE}
-#Number of trials
-n_1 <- 37
-#muA
-muA_1 <- 0.651
-#sigmaA
-sigmaA_1 <- 0.765
-#Standard deviation of muA
-sdMuA_1 <- sigmaA_1 / sqrt(n_1)
 #Data frame to put the estimates in a table
-dfMuA_1 <- data.frame(c("Cochrane frequentist", "Cochrane Bayesian", "MetaBayesDTA"), est=c(0.6534, 0.6536, muA_1), stdDev=c(0.1275, 0.1288, format(sdMuA_1, digits=4)), lower=c(NA, 0.4037, 0.398), upper=c(NA, 0.9100, 0.903))
+dfMuA_1 <- data.frame(c("Cochrane frequentist", "Cochrane Bayesian", "MetaBayesDTA"), est=c(0.6534, 0.6536, 0.651), stdDev=c(0.1275, 0.1288, 0.142), lower=c(NA, 0.4037, 0.386), upper=c(NA, 0.9100, 0.931))
 
 #Table
 knitr::kable(x=dfMuA_1, col.names=c("", "Estimate", "Standard deviation", "Lower 95% limit", "Upper 95% limit"), align = 'l')
 ```
 
 
-Referring to the Parameter Estimates tab in MetaBayesDTA, logit sensitivity can be read straight off, `r muA_1`, as can its 95% posterior interval. The standard deviation can be estimated by:
-
-$$SD(\mu_A) = `r sigmaA_1` / \sqrt{`r n_1`} = `r format(sdMuA_1, digits=4)`$$
-
-where `r sigmaA_1` is $\sigma_A$ ($\sigma_1$ in MetaBayesDTA) and `r n_1` is the number of trials.
-
-
 <br>
-
-
-
-
 
 
 ### Mean logit specificity ($\mu_B$)
 
 ```{r, echo=FALSE}
-#muB
-muB_1 <- 3.082
-#sigmaB
-sigmaB_1 <- 0.786
-#Standard deviation of muB
-sdMuB_1 <- sigmaB_1 / sqrt(n_1)
 #Data frame to put the estimates in a table
-dfMuB_1 <- data.frame(c("Cochrane frequentist", "Cochrane Bayesian", "MetaBayesDTA"), est=c(3.1090, 3.1028, muB_1), stdDev=c(0.1459, 0.1454, format(sdMuB_1, digits=4)), lower=c(NA, 2.8282, 2.815), upper=c(NA, 3.4031, 3.405))
+dfMuB_1 <- data.frame(c("Cochrane frequentist", "Cochrane Bayesian", "MetaBayesDTA"), est=c(3.1090, 3.1028, 3.082), stdDev=c(0.1459, 0.1454, 0.160), lower=c(NA, 2.8282, 2.779), upper=c(NA, 3.4031, 3.412))
 #Table
 knitr::kable(x=dfMuB_1, col.names=c("", "Estimate", "Standard deviation", "Lower 95% limit", "Upper 95% limit"), align = 'l')
 ```
 
 
-Logit specificity can be read straight off, `r muB_1`, as can its 95% posterior interval. The standard deviation can be estimated by:
-
-$$SD(\mu_B) = `r sigmaB_1` / \sqrt{`r n_1`} = `r format(sdMuB_1, digits=4)`$$
-
-where `r sigmaB_1` is $\sigma_B$ ($\sigma_0$ in MetaBayesDTA) and `r n_1` is the number of trials.
-
 <br>
-
-
-
-
-
 
 
 ### Variance of random effects for logit sensitivity ($\sigma_A^2$)
 
 ```{r, echo=FALSE}
+# #Number of trials
+n_1 <- 37
+#sigmaA
+sigmaA_1 <- 0.762
 #Variance of logit sensitivity
 varA_1 <- sigmaA_1^2
 #Upper limit of 95% posterior interval of sigmaA
-sigmaAU_1 <- 1.000
+sigmaAU_1 <- 0.997
 #Lower limit
-sigmaAL_1 <- 0.596
+sigmaAL_1 <- 0.585
 #Upper limit of 95% posterior interval of variance of logit sensitivity
 varAU_1 <- sigmaAU_1^2
 #Lower limit
 varAL_1 <- sigmaAL_1^2
-#Estimate of standard deviation of (Variance of logit sensitivity) using upper limit
-sdVarAU_1 <- sigmaAU_1 * sqrt(2 * (n_1 - 1)) * qchisq(p=0.025, df=n_1-1) / (n_1 - 1)^2
-#...using lower limit
-sdVarAL_1 <- sigmaAL_1 * sqrt(2 * (n_1 - 1)) * qchisq(p=0.975, df=n_1-1) / (n_1 - 1)^2
-#...using both limits
-sdVarA_1 <- (sdVarAU_1 + sdVarAL_1) / 2
+# #Estimate of standard deviation of variance of logit sensitivity
+sdVarA_1 <- sqrt(2) * varA_1 / sqrt(n_1 - 1)
 #Data frame to put the estimates in a table
-dfVarA_1 <- data.frame(c("Cochrane frequentist", "Cochrane Bayesian", "MetaBayesDTA"), est=c(0.5426, 0.5318, format(varA_1, digits=4)), stdDev=c(0.1463, 0.1511, format(sdVarA_1, digits=4)), lower=c(NA, 0.3276, format(varAL_1, digits=4)), upper=c(NA, 0.9125, format(varAU_1, nsmall=4)))
+dfVarA_1 <- data.frame(c("Cochrane frequentist", "Cochrane Bayesian", "MetaBayesDTA"), est=c(0.5426, 0.5318, format(varA_1, digits=4)), stdDev=c(0.1463, 0.1511, format(sdVarA_1, digits=4)), lower=c(NA, 0.3276, format(varAL_1, digits=4)), upper=c(NA, 0.9125, format(varAU_1, digits=4)))
 #Table
 knitr::kable(x=dfVarA_1, col.names=c("", "Estimate", "Standard deviation", "Lower 95% limit", "Upper 95% limit"), align = 'l')
 ```
 
-
 In MetaBayesDTA, between study SD for logit(sensitivity) = `r sigmaA_1`. This is the square root of the variance, so the variance estimate is $`r sigmaA_1`^2 = `r format(varA_1, digits=4)`$. The posterior interval can be similarly transformed into an interval for the variance:
 
-$$(`r sigmaAL_1` ^2, `r format(sigmaAU_1, nsmall=3)` ^2) = (`r format(sigmaAL_1^2, digits=3)`, `r format(sigmaAU_1^2, nsmall=3)`).$$
+$$(`r sigmaAL_1` ^2, `r format(sigmaAU_1, nsmall=3)` ^2) = (`r format(sigmaAL_1^2, digits=3)`, `r format(sigmaAU_1^2, digits=4)`).$$
   
-The standard deviation of $\sigma_A^2$ can be estimated from the 95% posterior interval in MetaBayesDTA using the upper limit, `r format(sigmaAU_1, nsmall=3)`: 
+The standard deviation of $\sigma_A^2$ can be estimated by
 
-$$SD(\sigma_A^2) = `r format(sigmaAU_1, nsmall=3)` \times \sqrt{2 \times `r n_1 - 1`} \times `r format(qchisq(p=0.025, df=n_1-1), digits=4)` / `r n_1 - 1`^2 = `r format(sdVarAU_1, digits=3, nsmall=3)`.$$
-  
-    
-Here `r n_1-1` is the number of trials minus 1, and `r format(qchisq(p=0.025, df=n_1-1), digits=4)` is the 2.5% quantile of the $\chi_{`r n_1-1`}^2$ distribution.
+$$SD(\sigma_A^2) = \sqrt{2} \times `r format(varA_1, digits = 4)` / \sqrt{`r n_1 - 1`} = `r format(sdVarA_1, digits=4)`$$
 
-Similarly, using the lower limit, `r sigmaAL_1`:
-  
-$$SD(\sigma_A^2) = `r sigmaAL_1` \times \sqrt{2 \times `r n_1 - 1`} \times `r format(qchisq(p=0.975, df=n_1-1), digits=4)` / `r n_1-1`^2 = `r format(sdVarAL_1, digits=3)`$$
-  
-where `r format(qchisq(p=0.975, df=n_1-1), digits=4)` is the 97.5% quantile of the $\chi_{`r n_1-1`}^2$ distribution. There is a large discrepancy in these two estimates. This implies that the posterior distribution does not have the Chi-squared distribution that would be assumed in a frequentist model. It appears that the estimate using the lower limit is better, but in practice one may not have another estimate to compare against. Therefore, without access to the posterior distribution itself, the mean of the two estimates can be used as the overall estimate:
-  
-$$SD(\sigma_A^2) = (`r format(sdVarAU_1, digits=3, nsmall=3)` + `r format(sdVarAL_1, digits=3)`) / 2 = `r format(sdVarA_1, digits=3)`.$$
+where `r n_1 - 1` is the number of trials minus 1.
 
 <br>
-  
-  
-  
-  
+
+
 ### Variance of random effects for logit specificity ($\sigma_B^2$)
 
 ```{r, echo=FALSE}
+#sigmaB
+sigmaB_1 <- 0.786
 #Variance of logit specificity
 varB_1 <- sigmaB_1^2
 #Upper limit of 95% posterior interval of sigmaB
-sigmaBU_1 <- 1.092
+sigmaBU_1 <- 1.101
 #Lower limit
-sigmaBL_1 <- 0.579
+sigmaBL_1 <- 0.567
 #Upper limit of 95% posterior interval of variance of logit specificity
 varBU_1 <- sigmaBU_1^2
 #Lower limit
 varBL_1 <- sigmaBL_1^2
-#Estimate of standard deviation of (Variance of logit specifitiy) using upper limit
-sdVarBU_1 <- sigmaBU_1 * sqrt(2 * (n_1 - 1)) * qchisq(p=0.025, df=n_1-1) / (n_1 - 1)^2
-#...using lower limit
-sdVarBL_1 <- sigmaBL_1 * sqrt(2 * (n_1 - 1)) * qchisq(p=0.975, df=n_1-1) / (n_1 - 1)^2
-#...using both limits
-sdVarB_1 <- (sdVarBU_1 + sdVarBL_1) / 2
+# #Estimate of standard deviation of variance of logit specifitiy
+sdVarB_1 <- sqrt(2) * varB_1 / sqrt(n_1 - 1)
 #Data frame to put the estimates in a table
 dfVarB_1 <- data.frame(c("Cochrane frequentist", "Cochrane Bayesian", "MetaBayesDTA"), est=c(0.5717, 0.5400, format(varB_1, digits=4)), stdDev=c(0.1873, 0.1867, format(sdVarB_1, digits=4)), lower=c(NA, 0.2907, format(varBL_1, digits=4)), upper=c(NA, 1.0138, format(varBU_1, digits=4)))
 #Table
 knitr::kable(x=dfVarB_1, col.names=c("", "Estimate", "Standard deviation", "Lower 95% limit", "Upper 95% limit"), align = 'l')
 ```
 
-
 In MetaBayesDTA, between study SD for logit(specificity) = `r sigmaB_1`. This is the square root of the variance, so the variance estimate is $`r sigmaB_1`^2 = `r format(varB_1, digits=4)`$. The posterior interval can be similarly transformed into an interval for the variance:
 
 $$(`r sigmaBL_1` ^2, `r format(sigmaBU_1, nsmall=3)` ^2) = (`r format(sigmaBL_1^2, digits=3)`, `r format(sigmaBU_1^2, digits=4)`).$$
-  
-The standard deviation of $\sigma_B^2$ can be estimated from the 95% posterior interval using the upper limit, `r format(sigmaBU_1, nsmall=3)`: 
 
-$$SD(\sigma_B^2) = `r format(sigmaBU_1, nsmall=3)` \times \sqrt{2 \times `r n_1 - 1`} \times `r format(qchisq(p=0.025, df=n_1-1), digits=4)` / `r n_1 - 1`^2 = `r format(sdVarBU_1, digits=3, nsmall=3)`$$
+The standard deviation of $\sigma_B^2$ can be estimated by
 
-and the lower limit, `r sigmaBL_1`:
-  
-$$SD(\sigma_B^2) = `r sigmaBL_1` \times \sqrt{2 \times `r n_1 - 1`} \times `r format(qchisq(p=0.975, df=n_1-1), digits=4)` / `r n_1-1`^2 = `r format(sdVarBL_1, digits=3)`.$$
-  
-Again, there is a large discrepancy. This time the mean appears to be a better estimate than the one using the lower limit. The mean of the estimates is
-  
-$$SD(\sigma_B^2) = (`r format(sdVarBU_1, digits=3, nsmall=3)` + `r format(sdVarBL_1, digits=3)`) / 2 = `r format(sdVarB_1, digits=3)`.$$
+$$SD(\sigma_B^2) = \sqrt{2} \times `r format(varB_1, digits = 4)` / \sqrt{`r n_1 - 1`} = `r format(sdVarB_1, digits=4)`$$
+
+where `r n_1 - 1` is the number of trials minus 1.
 
 <br>
-  
-  
-  
-  
-  
-  
+
+
 ### Correlation of logit sensitivity and logit specificity ($\rho$)
 
 ```{r, echo=FALSE}
 #Covariance of logit sensitivity and logit specificity in the frequentist model
 covFreq_1 <- -0.2704
-#Correlation of logit sensitivity and logit specificity
-rho_1 <- -0.414
-#Upper limit of 95% posterior interval
-rhoU_1 <- -0.027
-#Lower limit
-rhoL_1 <- -0.688
-#Standard deviation of correlation
-sdRho_1 <- (1 - rho_1^2) / sqrt(n_1-1)
 #Frequentist correlation
 rhoF_1 <- -0.2704 / (sqrt(0.5426) * sqrt(0.5717))
 #Standard error of frequentist correlation
 seRhoF_1 <- (1 - rhoF_1^2) / sqrt(n_1-1)
 #Data frame to put the estimates in a table
-dfRho_1 <- data.frame(c("Cochrane frequentist", "Cochrane Bayesian", "MetaBayesDTA"), est=c(format(rhoF_1, digits=4), -0.4362, rho_1),  stdDev=c(format(seRhoF_1, digits=4), 0.1567, format(sdRho_1, digits=3)), lower=c(NA, -0.6993, rhoL_1), upper=c(NA, -0.0911, rhoU_1))
+dfRho_1 <- data.frame(c("Cochrane frequentist", "Cochrane Bayesian", "MetaBayesDTA"), est=c(format(rhoF_1, digits=4), -0.4362, -0.408),  stdDev=c(format(seRhoF_1, digits=4), 0.1567, format(0.160, digits=3)), lower=c(NA, -0.6993, -0.681), upper=c(NA, -0.0911, -0.059))
 #Table
 knitr::kable(x=dfRho_1, col.names=c("", "Estimate", "Standard deviation", "Lower 95% limit", "Upper 95% limit"), align = 'l')
 ```
+
 
 The frequentist model provides an estimate of the covariance $\sigma_{AB}$ rather than the correlation $\rho$. The covariance estimate is $`r covFreq_1`$. This can be converted into a correlation by dividing by the product of the standard deviations of logit sensitivity and logit specificity:
 
@@ -425,16 +335,9 @@ Its standard error can be estimated as
 
 $$(1 - (`r format(rhoF_1, digits=4)`)^2) / \sqrt{`r n_1-1`} = `r format(seRhoF_1, digits=3)`$$
 
-where `r n_1-1` is the number of trials minus 1. The same calculation can be used to estimate the standard deviation of $\rho$ from the MetaBayesDTA output:
-
-$$SD(\rho) = (1 - (`r format(rho_1, digits=4)`)^2) / \sqrt{`r n_1-1`} = `r format(sdRho_1, digits=3)`.$$
+where `r n_1-1` is the number of trials minus 1.
 
 <br>
-
-
-
-
-
 
 <!--------------------------------------------------------------------------------------->
 
@@ -494,9 +397,9 @@ knitr::include_graphics(".//Cochrane DTA 9.4.4 example 2//Pictures//SROC 4.png")
 
 
 <!--------------------------------------------------------------------------------------->
-<!-- Estimate the parameters
+<!-- Compare the parameters
 <!--------------------------------------------------------------------------------------->
-## Estimate the parameters (optional)
+## Compare the parameters
 
 <br>
 
@@ -515,6 +418,8 @@ The table below is from chapter 9, page 20, of the handbook, and contains the pa
 ```{r, label = "", dpi=45, fig.align = "center", echo = FALSE, fig.cap ="", out.height="100%", out.width="100%"}
 knitr::include_graphics(".//Cochrane DTA 9.4.4 example 2//Pictures//Cochrane parameters.png")
 ```
+
+<br>
 
 Next are the estimated means and standard deviations of the parameters, together with quantiles, from the Bayesian model, found in chapter 10, page 24 of the handbook.
 
@@ -535,43 +440,6 @@ knitr::kable(x=dfParameters_2, col.names=c("Parameters", "", "", "", "", ""), al
 ```
 
 
-### Shape of SROC curve ($\beta$)
-
-```{r, echo=FALSE}
-#beta
-beta_2 <- 0.227
-#Upper limit of 95% posterior interval
-betaU_2 <- 0.536
-#Lower limit
-betaL_2 <- -0.097
-#Estimate of SD(beta) from sensitivity equation and upper limit of posterior interval
-sdBetaSensU_2 <- exp((betaU_2 - beta_2) / 2) - 1
-#Estimate of SD(beta) from sensitivity equation and lower limit of posterior interval
-sdBetaSensL_2 <- 1 - exp((betaL_2 - beta_2) / 2)
-#Estimate of SD(beta) from specificity equation and upper limit of posterior interval
-sdBetaSpecU_2 <- 1 - exp((beta_2 - betaU_2) / 2)
-#Estimate of SD(beta) from specificity equation and lower limit of posterior interval
-sdBetaSpecL_2 <- exp((beta_2 - betaL_2) / 2) - 1
-#Combined estimate of SD(beta)
-sdBeta_2 <- mean(c(sdBetaSensU_2, sdBetaSensL_2, sdBetaSpecU_2, sdBetaSpecL_2))
-#Data frame to put the estimates in a table
-dfBeta_2 <- data.frame(c("Cochrane frequentist", "Cochrane Bayesian", "MetaBayesDTA"), est=c(0.2267, 0.2189, beta_2), stdDev=c(0.1624, format(0.1630, nsmall=4), format(sdBeta_2, digits=4)),  lower=c(NA, -0.1066, betaL_2), upper=c(NA, 0.5348, betaU_2))
-#Table
-knitr::kable(x=dfBeta_2, col.names=c("", "Estimate", "Standard deviation", "Lower 95% limit", "Upper 95% limit"), align = 'l')
-```
-
-There are four ways to estimate the standard deviation of $\beta$, since there is a sensitivity equation (defined by $j = 1$ in the model definition) and a specificity equation ($j = 2$), and two limits of the posterior interval. These four estimates are
-
-\begin{align*}
-\text{Sensitivity equation, upper limit: } \hspace{5pt} & \exp{((`r betaU_2` - `r beta_2`) / 2)} - 1 & = `r format(sdBetaSensU_2, digits=4)` \\
-\text{Sensitivity equation, lower limit: } \hspace{5pt} & 1 - \exp{((`r betaL_2` - `r beta_2`) / 2)} & = `r format(sdBetaSensL_2, digits=4)` \\
-\text{Specificity equation, upper limit: } \hspace{5pt} & 1 - \exp{((`r beta_2` - `r betaU_2`) / 2)} & = `r format(sdBetaSpecU_2, digits=4)` \\
-\text{Specificity equation, lower limit: } \hspace{5pt} & \exp{((`r beta_2` - `r betaL_2`) / 2)} - 1 & = `r format(sdBetaSpecL_2, digits=4)` \\
-\end{align*}
-
-The mean of the estimates can be taken as the overall estimate:
-
-$$ (`r format(sdBetaSensU_2, digits=4)` + `r format(sdBetaSensL_2, digits=4)` + `r format(sdBetaSpecU_2, digits=4)` + `r format(sdBetaSpecL_2, digits=4)`) / 4 = `r format(sdBeta_2, digits=4)`$$
 
 <br>
 
@@ -629,9 +497,9 @@ knitr::include_graphics(".//Cochrane DTA 9.4.6.3 example 1//Pictures//Analysis 2
 <br>
 
 <!--------------------------------------------------------------------------------------->
-<!-- Estimate the parameters
+<!-- Compare the parameters
 <!--------------------------------------------------------------------------------------->
-## Estimate the parameters (optional)
+## Compare the parameters
 
 <br>
 
@@ -699,18 +567,18 @@ n1_3 <- 8
 #Number of trials in group CCP2
 n2_3 <- 29
 #Logit sensitivity parameters
-muA_3 <- -0.068
-muA2_3 <- 0.866
+muA_3 <- -0.067
+muA2_3 <- 0.870
 nuA_3 <- muA2_3 - muA_3
 #Upper limit of 95% posterior intervals
-muAU_3 <- 0.426
-muA2U_3 <- 1.145
+muAU_3 <- 0.460
+muA2U_3 <- 1.111
 #Lower limit
-muAL_3 <- -0.523
-muA2L_3 <- 0.611
+muAL_3 <- -0.520
+muA2L_3 <- 0.621
 #Standard deviations
-sigmaA_3 <- 0.650
-sdMuA_3 <- sigmaA_3 / sqrt(n1_3)
+sigmaA_3 <- 0.637
+# sdMuA_3 <- 0.227
 sdNuA_3 <- sigmaA_3 * sqrt((n1_3 + n2_3) / (n1_3 * n2_3))
 
 ###sdMuA_3 <- (muAU_3 - muAL_3) / (2 * 1.96)
@@ -725,7 +593,7 @@ nuAU_3 <- nuA_3 + 1.96 * sdNuA_3
 nuAL_3 <- nuA_3 - 1.96 * sdNuA_3
 
 #Data frame to put the estimates in a table
-dfMuANuA <- data.frame(parameter=c("$\\mu_A$", " ", " ", "$\\nu_A$", " ", " "), rep(c("Cochrane frequentist", "Cochrane Bayesian", "MetaBayesDTA"), times=2), est=c(-0.0965, -0.1001, muA_3, 0.9626, 0.9685, nuA_3), stdDev=c(0.2203, 0.2287, format(sdMuA_3, digits=4), 0.2513, 0.2605, format(sdNuA_3, digits=4)), lower=c(NA, -0.5547, muAL_3, NA, 0.4634, format(nuAL_3, digits=4, nsmall=4)), upper=c(NA, 0.3478, muAU_3, NA, 1.4906, format(nuAU_3, digits=4, nsmall=4)))
+dfMuANuA <- data.frame(parameter=c("$\\mu_A$", " ", " ", "$\\nu_A$", " ", " "), rep(c("Cochrane frequentist", "Cochrane Bayesian", "MetaBayesDTA"), times=2), est=c(-0.0965, -0.1001, muA_3, 0.9626, 0.9685, nuA_3), stdDev=c(0.2203, 0.2287, 0.247, 0.2513, 0.2605, format(sdNuA_3, digits=4)), lower=c(NA, -0.5547, muAL_3, NA, 0.4634, format(nuAL_3, digits=4, nsmall=4)), upper=c(NA, 0.3478, muAU_3, NA, 1.4906, format(nuAU_3, digits=4, nsmall=4)))
 
 #Table
 knitr::kable(x=dfMuANuA, col.names=c("Parameter", "Source", "Estimate", "Standard deviation", "Lower 95% limit", "Upper 95% limit"), align = 'l')
@@ -733,23 +601,21 @@ knitr::kable(x=dfMuANuA, col.names=c("Parameter", "Source", "Estimate", "Standar
 
 <br>
 
-MetaBayesDTA provides the mean logit sensitivity for the two subgroups, which are $(\mu_1L=CCP1) = \mu_A$ in the CCP1 group and $(\mu_1L=CCP2) = \mu_A + \nu_A$ in the CCP2 group. The parameter estimate and posterior interval for $\mu_A$ can be read from the output for $(\mu_1L=CCP1)$. The standard deviation of $\mu_A$ is
+MetaBayesDTA provides the mean logit sensitivity for the two subgroups, which are $(\mu_1L=CCP1) = \mu_A$ in the CCP1 group and $(\mu_1L=CCP2) = \mu_A + \nu_A$ in the CCP2 group. The statistics for $\mu_A$ can be read from the output for $(\mu_1L=CCP1)$.
 
-$$SD(\mu_A) = `r format(sigmaA_3, nsmall=3)` / \sqrt{`r n1_3`} = `r format(sdMuA_3, digits=4)`$$
-
-where $`r format(sigmaA_3, nsmall=3)`$ is $\sigma_A$ ($\sigma_1$ in MetaBayesDTA) and $`r n1_3`$ is the number of trials in the CCP1 group.
-
-The parameter estimate for $\nu_A$ is $`r muA2_3` - `r muA_3` = `r nuA_3`$ where $`r muA2_3`$ is $\mu_1L=CCP2$ and $`r muA_3`$ is $\mu_1L=CCP1$.
+The parameter estimate for $\nu_A$ is $`r muA2_3` - `r muA_3` = `r nuA_3`$ where $`r muA2_3`$ is $(\mu_1L=CCP2)$ and $`r muA_3`$ is $(\mu_1L=CCP1)$.
 
 The standard deviation of $\nu_A$ is
 
 $$SD(\nu_A) = `r format(sigmaA_3, nsmall=3)` \sqrt{`r n1_3 + n2_3`} / \sqrt{`r n1_3` \times `r n2_3`} = `r format(sdNuA_3, digits=4)`$$
 
-where `r n2_3` is the number of trials in the CCP2 group and `r n1_3 + n2_3` is the total number of trials.
+where `r sigmaA_3` is $\sigma_A$ ($\sigma_1$ in MetaBayesDTA), `r n1_3` and `r n2_3` are the number of trials in the CCP1 and CCP2 groups respectively, and `r n1_3 + n2_3` is the total number of trials.
 
 The 95% posterior interval for $\nu_A$ is then estimated by
 
 $$`r nuA_3` \pm 1.96 \times `r format(sdNuA_3, digits=4)` = (`r format(nuAL_3, digits=4)`, `r format(nuAU_3, digits=5)`)$$
+
+<br>
 
 
 <!--------------------------------------------------------------------------------------->
@@ -811,7 +677,7 @@ In addition to ticking the **sROC curve** box, as in section \@ref(HSROC), this 
 <br>
 
 ```{r, label = "", dpi=45, fig.align = "center", echo = FALSE, fig.cap ="", out.height="40%", out.width="40%"}
-knitr::include_graphics(".//Cochrane DTA 9.4.6.4 example 2//Pictures//SROC.png")
+knitr::include_graphics(".//Cochrane DTA 9.4.6.5 example 2//Pictures//SROC.png")
 ```
 
 <br>
@@ -821,7 +687,7 @@ The SROC plot should look like this:
 <br>
 
 ```{r, label = "", dpi=45, fig.align = "center", echo = FALSE, fig.cap ="", out.height="90%", out.width="90%"}
-knitr::include_graphics(".//Cochrane DTA 9.4.6.4 example 2//Pictures//SROC 2.png")
+knitr::include_graphics(".//Cochrane DTA 9.4.6.5 example 2//Pictures//SROC 2.png")
 ```
 
 
@@ -1003,7 +869,7 @@ knitr::include_graphics(".//Cochrane DTA 10.8//Pictures//HSROC 2.png")
 <!--------------------------------------------------------------------------------------->
 <!-- Parameters
 <!--------------------------------------------------------------------------------------->
-## Parameters (optional)
+## Compare the parameters
 
 <br>
 
@@ -1046,22 +912,6 @@ Not all of the output given in the Cochrane handbook is provided by MetaBayesDTA
 
 
 
-
-## Means
-
-This sections refers to $\mu_A$ and $\mu_B$ in the bivariate model, and $\Lambda$ and $\Theta$ in the HSROC model.
-
-Assuming the parameter $\mu$ is the mean of a Normal distribution $N(\mu, \sigma^2)$ and has been estimated from $n$ trials, the standard deviation of $\mu$ can be estimated by
-
-$$SD(\mu) = \sigma / \sqrt{n}.$$
-
-
-<br>
-
-
-
-
-
 ## Variances
 
 This sections refers to $\sigma_A^2$ and $\sigma_B^2$ in the bivariate model, and $\sigma_\alpha^2$ and $\sigma_\theta^2$ in the HSROC model.
@@ -1070,62 +920,13 @@ Assuming the parameter $\sigma^2$ has distribution satisfying
 
 $$\sigma^2 (n-1) / \sigma_m^2 \sim \chi^2_{n-1}$$
 
-where $E(\sigma^2) = \sigma_m^2$ and $n$ is the number of trials, its standard deviation can be estimated as
+where $E(\sigma^2) = \sigma_m^2$ and $n$ is the number of trials, its standard deviation can be estimated by
 
-$$SD(\sigma^2) = U \sqrt{2(n-1)} \chi^2_{n-1:0.025} / (n-1)^2$$
+$$SD(\sigma^2) = \sqrt{2} \sigma_m^2 / \sqrt{n-1}.$$
 
-where $U$ is the upper limit of the posterior interval and $n$ is the number of trials. Using the lower limit of the posterior interval $L$, the corresponding estimate is
-
-$$SD(\sigma^2) = L \sqrt{2(n-1)} \chi^2_{n-1:0.975} / (n-1)^2$$
-
-These formulare are derived as follows. With the distributional assumption above, a 95% confidence interval for $\sigma^2 (n-1) / \sigma_m^2$ is
-
-$$(\chi^2_{n-1;0.025}, \chi^2_{n-1;0.975}).$$
-
-Dividing by $\sigma^2 (n-1)$ yields a 95% confidence interval for $1 / \sigma_m^2$ of
-
-$$(\chi^2_{n-1;0.025} / (\sigma^2 (n-1)), \chi^2_{n-1;0.975} / (\sigma^2 (n-1))),$$
-
-and taking reciprocals gives a 95% confidence interval for $\sigma_m^2$ of
-
-$$(\sigma^2 (n-1) / \chi^2_{n-1;0.975}, \sigma^2 (n-1) / \chi^2_{n-1;0.025}),$$
-
-taking care to switch the lower and upper limits.
-
-
-Next, given $\sigma^2 \sim \sigma_m^2 \chi^2_{n-1} / (n-1)$ we have
-
-$$\begin{align*}
-SD(\sigma^2) & = SD(\sigma_m^2 \chi^2_{n-1} / (n-1)) \\
-& = \sigma_m^2 SD(\chi^2_{n-1}) / (n-1) \\
-& = \sigma_m^2 \sqrt{2(n - 1)} / (n-1)
-\end{align*}$$
-
-since $Var(\chi^2_{n-1}) = 2(n-1)$. Therefore to obtain an estimate of $SD(\sigma^2)$ from the upper limit 
-
-$$U = \sigma^2 (n-1) / \chi^2_{n-1;0.025}$$
-
-of the posterior interval, $U$ must be multiplied by a constant $C$ satisfying
-
-$$UC = \sigma^2 \sqrt{2(n - 1)} / (n-1).$$
-
-$C$ can be calculated as
-
-$$\begin{align*}
-C & = \sigma^2 \sqrt{2(n - 1)} / U(n-1) \\
-& = \sigma^2 \sqrt{2(n - 1)} / [\sigma^2 (n-1) / \chi^2_{n-1;0.025}](n-1) \\
-& = \sigma^2 \sqrt{2(n - 1)} \chi^2_{n-1;0.025} / \sigma^2 (n-1)^2 \\
-& = \sqrt{2(n - 1)} \chi^2_{n-1;0.025} / (n-1)^2.
-\end{align*}$$
-
-Therefore the estimate of $SD(\sigma^2)$ is $UC = U \sqrt{2(n - 1)} \chi^2_{n-1;0.025} / (n-1)^2$. 
-
-A similar calculation holds for the lower limit $L$.
+This follows immediately from the distributional assumption, because $Var(\chi^2_{n-1}) = 2(n-1)$.
 
 <br>
-
-
-
 
 
 
@@ -1139,93 +940,28 @@ $$(1 - r^2) / \sqrt{n-1}$$
 
 where $r$ is an estimate of their correlation and $n$ is the number of trials. Note that a confidence interval for $\rho$ is not required, only a point estimate $r$.
 
-
-
-
-## Shape of SROC curve, $\beta$
-
-This sections refers to $\beta$ in the HSROC model. Its standard deviation can be estimated in four ways, using the sensitivity equation
-
-$$logit(\pi_{i1}) = (\theta_i + \alpha_i / 2) \exp{(-\beta / 2)}$$
-
-or the (1 minus) specificity equation
-
-$$logit(\pi_{i2}) = (\theta_i - \alpha_i / 2) \exp{(\beta / 2)},$$
-
-and using the lower limit $L$ or upper limit $U$ of the posterior interval. The four estimates are
-
-\begin{align*}
-\text{Sensitivity equation, upper limit: } \hspace{5pt} & \exp{((U - \hat{\beta}_m) / 2)} - 1 \\
-\text{Sensitivity equation, lower limit: } \hspace{5pt} & 1 - \exp{((L - \hat{\beta}_m) / 2)} \\
-\text{Specificity equation, upper limit: } \hspace{5pt} & 1 - \exp{((\hat{\beta}_m - U) / 2)} \\
-\text{Specificity equation, lower limit: } \hspace{5pt} & \exp{((\hat{\beta}_m - L) / 2)} - 1
-\end{align*}
-
-where $\hat{\beta}_m$ is the posterior median of $\beta$. The mean of these estimates can be used as the overall estimate.
-
-Since the derivation of the estimates are similar, only one is shown, the sensitivity equation using the upper limit.
-
-The sensitivity equation can be rearranged into 
-
-$$\exp{(\beta / 2)} = (\theta_i + \alpha_i / 2) / logit(\pi_{i1}).$$
-
-The parameters $\theta_i$ and $\alpha_i$ are assumed to be independent and Normally distributed, and the mean sensitivities $\pi_{i1}$ are regarded as constants. Therefore $\exp{(\beta / 2)}$ is a linear combination of independent Normal distributions, and so is also Normal, say $\exp{(\beta / 2)} \sim N(\mu, \sigma^2)$. An estimate of $\mu$ can be obtained by utilising the fact that $\mu$ is the median of the distribution of $\exp{(\beta / 2)}$; it is not the case that $E(\exp{(\beta / 2)}) = \exp{(E(\beta / 2))}$, but this equality does hold if the expected values are replaced with medians. Therefore:
-
-$$\hat{\mu} = \exp{(\hat{\beta}_m / 2)}.$$
-
-A confidence interval for $\mu$ is $\hat{\mu} \pm 1.96 \hat{\sigma}$, which can be transformed into a confidence interval for $\beta_m$ with limits $L = 2 log( \hat{\mu} - 1.96 \hat{\sigma} )$ and $U = 2 log( \hat{\mu} + 1.96 \hat{\sigma} )$, as long as $\hat{\mu} - 1.96 \hat{\sigma} > 0$. An estimate of $\sigma$ in terms of $U$ and $\hat{\mu}$ can then be found by rearranging the equation for $U$:
-
-$$\hat{\sigma} = (\exp{(U / 2)} - \hat{\mu}) / 1.96.$$
-
-In general terms, given a random variable $X$ and a function $g$, the variance of $g(X)$ can be approximated as $$Var(g(X)) \approx (g'(E(X)))^2 Var(X).$$
-
-Putting $X = \exp(\beta / 2)$ and $g(x) = 2 log(x)$ and observing that $g'(x) = 2 / x$ yields
-
-$$Var(\beta) = Var(2 log( \exp{(\beta / 2)} )) \approx (2 / \hat{\mu})^2 \hat{\sigma}^2 = (2 \hat{\sigma} / \hat{\mu})^2.$$
-
-Therefore
-
-$$SD(\beta) \approx 2 \hat{\sigma} / \hat{\mu}.$$
-
-Substituting in the estimates $\hat{\mu}$ and $\hat{\sigma}$ obtained earlier gives
-
-\begin{align*}
-SD(\beta) & \approx 2 \hat{\sigma} / \hat{\mu} \\
-& = 2((\exp{(U / 2)} - \hat{\mu}) / 1.96) / \hat{\mu} \\
-& \approx (\exp{(U / 2)} - \hat{\mu}) / \hat{\mu} \\
-& = (\exp{(U / 2)} / \hat{\mu}) - 1 \\
-& = (\exp{(U / 2)} / \exp{(\hat{\beta}_m / 2)}) - 1 \\
-& = (\exp{((U / 2) - (\hat{\beta}_m / 2))} - 1 \\
-& = \exp{((U - \hat{\beta}_m) / 2)} - 1.
-\end{align*}
-
-
-
-
+<br>
 
 
 
 ## Difference of two means {#appendixDiff}
 
 
-This sections refers to $\mu_A$, $\mu_B$, $\nu_A$ and $\nu_B$ in the bivariate model with a covariate.
+This sections refers to $\nu_A$ and $\nu_B$ in the bivariate model with a covariate.
 
-In 9.4.6.3 example 1 the handbook gives parameter estimates for $\mu$ and $\nu$ (omitting the subscript $A$ or $B$), whereas MetaBayesDTA gives estimates for the mean logit sensitivity (and specificity) within the two subgroups, namely $\mu_1 = \mu$ for group 1 (CCP1) and $\mu_2 = \mu + \nu$ for group 2 (CCP2). This subsection describes how to obtain an estimate of the standard deviaton of $\mu$, and a point estimate, standard deviation and 95% posterior interval for $\nu$.
+In 9.4.6.3 example 1 the handbook gives parameter estimates for $\mu$ and $\nu$ (omitting the subscript $A$ or $B$), whereas MetaBayesDTA gives estimates for the mean logit sensitivity (and specificity) within the two subgroups, namely $\mu_1 = \mu$ for group 1 (CCP1) and $\mu_2 = \mu + \nu$ for group 2 (CCP2). This subsection describes how to obtain a point estimate, standard deviation and 95% posterior interval for $\nu$.
 
-Let $n_i$ be the number of trials in group $i$ with total number of trials $n = n_1 + n_2$. The standard deviation of $\mu$ is estimated by
+Let $n_i$ be the number of trials in group $i$ with total number of trials $n = n_1 + n_2$.
 
-$$SD(\mu) = \hat{\sigma} / \sqrt{n_1}$$
-
-A point estimate of $\nu$ is $\hat{\nu} = \hat{\mu}_2 - \hat{\mu}_1$, and its standard deviation can be estimated by
-
-$$SD(\nu) = \hat{\sigma} \sqrt{n} / \sqrt{n_1 n_2}.$$
-
-The 95% posterior interval for $\nu$ is then
+A point estimate of $\nu$ is $\hat{\nu} = \hat{\mu}_2 - \hat{\mu}_1$, and a 95% posterior interval is
 
 $$\hat{\nu} \pm 1.96 SD(\nu).$$
 
+The standard deviation of $\nu$ can be estimated by
 
-The derivation of these estimates is now given. Focusing on the marginal distribution of sensitivity or specificity, the model is described by $Y_i \sim N(\mu + \nu Z_i, \sigma^2)$, where $Z_i = 0$ in group 1 and $Z_i = 1$ in group 2. Writing the model in its usual matrix form
+$$SD(\nu) = \hat{\sigma} \sqrt{n} / \sqrt{n_1 n_2},$$
+
+with the details as follows. Focusing on the marginal distribution of sensitivity or specificity, the model is described by $Y_i \sim N(\mu + \nu Z_i, \sigma^2)$, where $Z_i = 0$ in group 1 and $Z_i = 1$ in group 2. Writing the model in its usual matrix form
 
 $$E(Y) = X \beta \hspace{10pt} \text{and} \hspace{10pt} Var(Y) = \sigma^2 I_n,$$
 
@@ -1254,10 +990,6 @@ $$Var(\beta) = \frac{\sigma^2}{n_1 n_2} \begin{pmatrix} n_2 & -n_2 \\
 -n_2 & n \end{pmatrix}$$
 
 and it follows that
-
-$$SD(\mu) = \sigma / \sqrt{n_1}$$
-
-and
 
 $$SD(\nu) = \sigma \sqrt{n} / \sqrt{n_1 n_2}.$$
 
